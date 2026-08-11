@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Claude Code Remote</title>
+  <meta name="theme-color" content="#0d1117" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/icon.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/xterm@5.3.0/css/xterm.css" />
+</head>
+<body>
+
+  <!-- Pantalla de login -->
+  <section id="loginScreen" class="screen">
+    <h1>Claude Code Remote</h1>
+    <p class="hint">Conectate al servidor que corre en tu PC.</p>
+    <form id="loginForm">
+      <label>
+        URL del servidor
+        <input id="serverUrl" type="url" placeholder="https://tu-tunel.trycloudflare.com" required />
+      </label>
+      <label>
+        Token
+        <input id="tokenInput" type="password" placeholder="Token secreto" required />
+      </label>
+      <button type="submit">Conectar</button>
+    </form>
+  </section>
+
+  <!-- Pantalla de selección de sesión -->
+  <section id="sessionScreen" class="screen hidden">
+    <header>
+      <h2>Sesiones</h2>
+      <div class="header-actions">
+        <button id="refreshBtn" title="Refrescar">⟳</button>
+        <button id="createSessionBtn" title="Nueva sesión">+ Nueva</button>
+      </div>
+    </header>
+    <ul id="sessionList" class="session-list"></ul>
+  </section>
+
+  <!-- Pantalla de chat/terminal -->
+  <section id="chatScreen" class="screen hidden">
+    <header>
+      <button id="backBtn">←</button>
+      <span id="status">Desconectado</span>
+    </header>
+    <div id="terminal"></div>
+    <div class="input-bar">
+      <button id="voiceBtn" title="Hablar">🎤</button>
+      <textarea id="messageInput" placeholder="Escribí o dictá una instrucción..." rows="1"></textarea>
+      <button id="sendBtn" title="Enviar">➤</button>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/xterm@5.3.0/lib/xterm.js"></script>
+  <script src="https://unpkg.com/xterm-addon-fit@0.8.0/lib/xterm-addon-fit.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
